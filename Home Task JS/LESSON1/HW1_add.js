@@ -8,7 +8,8 @@ let separator= '-------------------------';
 
 let youFirstName = prompt('Enter your name: ');
 let youMiddleName = prompt('Enter your middle name: ');
-let youAge = prompt('How old are you: ');
+let youAge = +prompt('How old are you: ');
+// youAge = youAge*1;
 
 console.log(`${taskX} 4 (additional task) ---`);
 
@@ -16,5 +17,6 @@ console.log(`HELLO ${youFirstName} ${youMiddleName} !`);
 console.log(`You are ${youAge} years old. `);
 console.log(`Nice to meet you ${youFirstName}  :)`);
 
+// console.log(typeof youAge);
 console.log(separator);
 // TASK 4 - end
