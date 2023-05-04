@@ -7,15 +7,13 @@ const separator = '-------------------------';
 //     якщо значення змінної х являється falsy (хибноподібні, тобто приводиться до false)
 console.log(`${taskX} 3_1 ---`);
 
-// let x = prompt('TASK 3-1. Введіть якесь значення: ');
-// Значення, які повертають false
-// (x === false || x === NaN || x === null || x === undefined || x === 0 || x === '')
 
-let x = -0;
+let x= 0;
 
-if (x === null || x === undefined || x === 0 || x === '') {
-    console.log('default')
-}
+// if (x === false || x === NaN || x === null || x === undefined || x === 0 || x === '') {
+//     console.log('default')
+// }
+console.log(x);
 
 console.log(separator);
 // TASK 3-1 - end
