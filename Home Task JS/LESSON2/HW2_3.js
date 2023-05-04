@@ -8,27 +8,14 @@ const separator = '-------------------------';
 console.log(`${taskX} 3_1 ---`);
 
 // let x = prompt('TASK 3-1. Введіть якесь значення: ');
-// let x='';
-// let x=null;
-//  let x=true;
-// let x="Undefined";
+// Значення, які повертають false
+// (x === false || x === NaN || x === null || x === undefined || x === 0 || x === '')
 
-let x = NaN
-x = x || "default"
-console.log(x)
+let x;
 
-console.log('Введене число: ', x, ' - (тип введенного значення - ', typeof x);
-// console.log('default', !!x)
-// if (!!x === false){
-//     console.log('default', !!x)
-//     // x = "default"
-// }
-
-// if (typeof x === false) {
-//     console.log('default')
-// } else {
-//     console.log('Тип введенного значення - ', typeof x)
-// }
+if (x === false || x === NaN || x === null || x === undefined || x === 0 || x === '') {
+    console.log('default')
+}
 
 console.log(separator);
 // TASK 3-1 - end
