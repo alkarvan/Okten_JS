@@ -38,9 +38,9 @@ console.log(separator);
 console.log(`${taskX} 1_3 ---`);
 
 let arr3 = [
-    {title: 'film about space', pageCount: 100, genre: 'fantastic', author:['Pavel S.', 56]},
-    {title: 'love story', pageCount: 225, genre: 'drama', author:['Emma L.', 34]},
-    {title: 'deadly weapon', pageCount: 94, genre: 'activity', author:['Jim',45]},
+    {title: 'film about space', pageCount: 100, genre: 'fantastic', author:[{name:'Pavel S.'}, {age:56}]},
+    {title: 'love story', pageCount: 225, genre: 'drama', author:[{name:'Emma L.'},{age:34}]},
+    {title: 'deadly weapon', pageCount: 94, genre: 'activity', author:[{name:'Jim'},{age:45}]},
 ];
 
 for (let i = 0; i < arr3.length; i++) {
