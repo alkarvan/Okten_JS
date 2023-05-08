@@ -13,7 +13,7 @@ console.log(`${taskX} 3_1 ---`);
 
 let x = -0;
 
-if (x === null || x === undefined || x === 0 || x === '') {
+if (x === '' || x === null || x === undefined || x === 0 ) {
     console.log('default')
 }
 
