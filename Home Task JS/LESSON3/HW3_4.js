@@ -31,30 +31,30 @@ for (const usersKey in users) {
 }
 
 document.write('--- Users with status = TRUE');
-document.write('<lu>');
+document.write('<ul>');
 for (const filterArrStatusTrueKey in filterArrStatusTrue) {
     document.write('<li>' + filterArrStatusTrue[filterArrStatusTrueKey].name + ' - status:'
         + filterArrStatusTrue[filterArrStatusTrueKey].status + '<br>' + '</li>');
 }
-document.write('</lu>');
+document.write('</ul>');
 document.write(separator);
 
 document.write('<br> --- Users with status = FALSE');
-document.write('<lu>');
+document.write('<ul>');
 for (const filterArrStatusFalseKey in filterArrStatusFalse) {
     document.write('<li>' + filterArrStatusFalse[filterArrStatusFalseKey].name + ' - status:'
         + filterArrStatusFalse[filterArrStatusFalseKey].status + '<br>' + '</li>');
 }
-document.write('</lu>');
+document.write('</ul>');
 document.write(separator);
 
 document.write('<br> --- Users with Age > 30');
-document.write('<lu>');
+document.write('<ul>');
 for (const filterArrAgeMore30Key in filterArrAgeMore30) {
     document.write('<li>' + filterArrAgeMore30[filterArrAgeMore30Key].name + ' - age:'
         + filterArrAgeMore30[filterArrAgeMore30Key].age + '<br>' + '</li>');
 }
-document.write('</lu>');
+document.write('</ul>');
 document.write(separator);
 
 
