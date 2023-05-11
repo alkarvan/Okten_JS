@@ -11,6 +11,10 @@ const arrOfElements = [12, 4, 67, 76, 33, 22, 11, 9];
 document.write(`Array of elements: [${arrOfElements}]`);
 
 function swap(arrOfElements, index1, index2) {
+    //++ в одну СТРОКУ
+    // [arrOfElements[index2],arrOfElements[index1]] = [arrOfElements[index1],arrOfElements[index2]];
+    // console.log(arrOfElements);
+    //--
     let newArr = [];
 
     for (let i = 0; i < arrOfElements.length; i++) {
