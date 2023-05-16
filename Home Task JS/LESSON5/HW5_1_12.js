@@ -10,25 +10,9 @@ document.write(`${taskX} 5-12 <br>(створити функцію swap(arr,inde
 const arrOfElements = [12, 4, 67, 76, 33, 22, 11, 9];
 document.write(`Array of elements: [${arrOfElements}]`);
 
-function swap(arrOfElements, index1, index2) {
-    //++ в одну СТРОКУ
-    // [arrOfElements[index2],arrOfElements[index1]] = [arrOfElements[index1],arrOfElements[index2]];
-    // console.log(arrOfElements);
-    //--
-    let newArr = [];
-
-    for (let i = 0; i < arrOfElements.length; i++) {
-        newArr[i] = arrOfElements[i];
-    }
-
-    newArr[index1] = arrOfElements[index2];
-    if (index2 > arrOfElements.length - 1) {
-        return document.write(`<br>Index2 outside the array !!!`)
-    } else {
-        newArr[index2] = arrOfElements[index1]
-    }
-
-    return document.write(`<br>Array of NEW elements: [${newArr}]`);
+let swap = (arrOfElements, index1, index2) => {
+    [arrOfElements[index2],arrOfElements[index1]] = [arrOfElements[index1],arrOfElements[index2]];
+   return document.write(`<br>Array of NEW elements: [${arrOfElements}]`);
 }
 
 let index1 = +prompt('Input index1:','0');
