@@ -35,6 +35,7 @@ console.log(separator);
 // - Є "брудна" стрінга let str = ' dirty string   ' . Почистити її від зайвих пробілів.
 let str = ' dirty string   ';
 console.log(str, ' - remove spaces: ', str.replaceAll(' ', ''));
+console.log(str.trim());
 console.log(separator);
 
 // - Напишіть функцію stringToArray(str), яка перетворює рядок на масив слів.
