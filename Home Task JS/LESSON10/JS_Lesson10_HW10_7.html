@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<!-- зробити масив на 100 об'єктів та дві кнопки prev next
+при завантажені сторінки з'являються перші 10 об'єктів.
+При натисканні next виводяться настпні 10 об'єктів
+При натисканні prev виводяться попередні 10 об'єктів
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS HW 10_7</title>
+    <style>
+        div {
+            width: 300px;
+            margin: 3px;
+            border: darkblue 2px solid;
+        }
+
+    </style>
+</head>
+<body>
+
+</body>
+
+<script>
+
+    let array = [];
+    for (let i = 0; i < 100; i++) {
+        array.push(`element - ${i} `);
+    }
+    let btnPrev = document.createElement('button');
+    let btnNext = document.createElement('button');
+    btnNext.innerText = 'Next';
+    btnPrev.innerText = 'Prev';
+    let divAll = document.createElement('div');
+
+
+    let nextClick = 0;
+    let allPage = array.length / 10; //9.6
+
+    btnNext.addEventListener('click', function (e) {
+        e.preventDefault();
+        let arrPage = array.slice([nextClick * 10], [(nextClick + 1) * 10]);
+        for (const arrPageElement of arrPage) {
+            let div = document.createElement('div');
+            div.innerText = arrPageElement;
+            divAll.appendChild(div);
+        }
+        document.body.appendChild(divAll)
+
+        divAll.replaceChildren(...arrPage);
+        nextClick += 1;
+        if (nextClick >= allPage) {
+            btnNext.setAttribute('disabled', 'disabled');
+            btnPrev.removeAttribute('disabled')
+        } else {
+            btnNext.removeAttribute('disabled')
+        }
+    })
+
+    btnPrev.addEventListener('click', function (e) {
+        e.preventDefault();
+        let arrPage = array.slice([(nextClick-1) * 10], [nextClick * 10]);
+        for (const arrPageElement of arrPage) {
+            let div = document.createElement('div');
+            div.innerText = arrPageElement;
+            divAll.appendChild(div);
+        }
+        document.body.appendChild(divAll)
+
+        divAll.replaceChildren(...arrPage);
+        nextClick -= 1;
+        if (nextClick <= 0) {
+            btnPrev.setAttribute('disabled', 'disabled');
+            btnNext.removeAttribute('disabled')
+        } else {
+            btnPrev.removeAttribute('disabled')
+        }
+    })
+
+    document.body.appendChild(btnPrev);
+    document.body.appendChild(btnNext);
+
+</script>
+
+</html>

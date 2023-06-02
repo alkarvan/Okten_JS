@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<!-- - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript,
+зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS HW 10_15</title>
+    <style>
+        div {
+            width: 300px;
+            margin: 3px;
+            border: darkblue 2px solid;
+        }
+
+    </style>
+</head>
+<body>
+
+</body>
+
+<script>
+    let text = document.createElement('div');
+    text.innerText = '- Створити довільний елемент з id = text та створити кнопку.\n' +
+        'Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".';
+    let clear = document.createElement('button');
+    clear.innerText = 'Clear';
+    document.body.appendChild(text);
+    document.body.appendChild(clear);
+
+    clear.addEventListener('click', function (e) {
+        e.preventDefault();
+        text.style.display = 'none';
+    })
+
+</script>
+
+</html>

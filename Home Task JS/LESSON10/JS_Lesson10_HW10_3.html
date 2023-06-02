@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<!-- - є сторінка, на якій є блок, я кому знаходиьтся цифра.
+написати код, який при кожному перезавантажені сторінки буде додавати до неї +1-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS HW 10_3</title>
+    <style>
+
+        .form1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            display: flex;
+            align-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<form class="form1" name="form1">
+    <div>
+        <p id="number">1</p>
+    </div>
+</form>
+
+</body>
+
+<script>
+
+    let valueInBlock = document.getElementById("number");
+    localStorage.setItem("valueNumber", JSON.stringify(valueInBlock.innerHTML));
+
+    document.form1.addEventListener('click', function (e) {
+        e.preventDefault();
+        let newValue = parseInt(JSON.parse(localStorage.getItem("valueNumber")))+1;
+        valueInBlock.innerHTML = JSON.stringify(newValue)
+        localStorage.setItem("valueNumber",JSON.stringify(newValue));
+    });
+
+    // !!!!!!!!!!!!!!!!!!!! - ЧОМУ ЦЕ НЕ ПРАЦЮЄ ТАК І НЕ ЗРОЗУМІВ - !!!!!!!!!!!!
+    // window.addEventListener('load', function (e) {
+    //     e.preventDefault();
+    //     let valueInBlock = document.getElementById("number");
+    //     localStorage.setItem("valueNumber", JSON.stringify(valueInBlock.innerHTML));
+    //     let newValue = parseInt(JSON.parse(localStorage.getItem("valueNumber"))) + 1;
+    //     localStorage.setItem("valueNumber", JSON.stringify(newValue));
+    //     valueInBlock.innerHTML = JSON.stringify(newValue);
+    // });
+</script>
+
+</html>

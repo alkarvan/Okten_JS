@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<!--// - Стоврити форму з трьома полями для name,surname,age та кнопкою.-->
+<!--// При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ.-->
+<!--// Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS HW 10_1</title>
+    <style>
+        .targetForm1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            text-align: justify;
+        }
+
+        .form1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            display: flex;
+            align-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<form class="form1" name="form1">
+    <input type="text" name="name" value="default name">
+    <!--    <br>-->
+    <input type="text" name="surname" value="default surname">
+    <!--    <br>-->
+    <input type="number" name="age">
+    <div>
+        <button>send</button>
+    </div>
+</form>
+<div class="targetForm1"></div>
+
+</body>
+
+<script>
+
+    document.form1.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let obj = {
+            name: this.name.value,
+            surname: this.surname.value,
+            age: this.age.value
+        }
+
+        let targetForm1 = document.getElementsByClassName('targetForm1')[0];
+        targetForm1.innerHTML = JSON.stringify(obj);
+    });
+
+</script>
+
+</html>
