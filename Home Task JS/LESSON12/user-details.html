@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<!--зробити файл users.html
+з ендпоінту https://jsonplaceholder.typicode.com/users отримати всіх користувачів
+вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
+при кліку на посилання перехід на відповідну сторінку,
+на якій буде вся інформація про користувача (всі 15 полів) отримана через додатковий запит
+(https://jsonplaceholder.typicode.com/users/XXX   ХХХ - айді користувача)
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS HW 12_details</title>
+    <style>
+        div {
+            width: 300px;
+            display: flex;
+            border: darkblue 2px solid;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div>Detail User Information</div>
+</body>
+
+<script>
+    let userID = JSON.parse(localStorage.getItem('userID')) || 0;
+
+    function NewInfo(key, objInfo, tegDiv) {
+        let tegP = document.createElement('p');
+        tegP.innerText = key + ':  ' + objInfo[key];
+        tegDiv.appendChild(tegP);
+    }
+
+    async function requestUsers(userID) {
+        let response = await fetch('https://jsonplaceholder.typicode.com/users?id=' + userID)
+            .then(response => response.json());
+        console.log(typeof response, response)
+
+        let tegDiv = document.createElement('div');
+        let obj = response;
+        Object.keys(response).forEach(key => {
+            let objInfo = obj[key];
+            Object.keys(objInfo).forEach(key => {
+                switch (key) {
+                    case 'id':
+                        new NewInfo(key, objInfo, tegDiv);
+                        break;
+                    case 'name':
+                        new NewInfo(key, objInfo, tegDiv);
+                        break;
+                    case 'phone':
+                        new NewInfo(key, objInfo, tegDiv);
+                        break;
+                    case 'username':
+                        new NewInfo(key, objInfo, tegDiv);
+                        break;
+                    case 'email':
+                        new NewInfo(key, objInfo, tegDiv);
+                        break;
+                    case 'website':
+                        new NewInfo(key, objInfo, tegDiv);
+                        break;
+                    case 'company':
+                        let tegDivCompany = document.createElement('div');
+                        tegDivCompany.innerText = '*** Company info: ***';
+
+                        let objCompany = objInfo[key];
+                        Object.keys(objCompany).forEach(key => {
+                            new NewInfo(key, objCompany, tegDivCompany);
+                        })
+
+                        tegDiv.appendChild(tegDivCompany);
+                        break;
+                    case 'address':
+                        let tegDivAddr = document.createElement('div');
+                        tegDivAddr.innerText = '*** Address info: ***';
+
+                        let objAddress = objInfo[key];
+                        Object.keys(objAddress).forEach(key => {
+                            if (key === 'geo') {
+                                let tegDivGeo = document.createElement('p');
+                                tegDivGeo.innerText = '*** address geo info: ***';
+                                tegDivAddr.appendChild(tegDivGeo);
+                                let objGeo = objAddress[key];
+                                Object.keys(objGeo).forEach(key => {
+                                    new NewInfo(key, objGeo, tegDivAddr);
+                                })
+                            } else {
+                                new NewInfo(key, objAddress, tegDivAddr);
+                            }
+                        })
+
+                        tegDiv.appendChild(tegDivAddr);
+                        break;
+                    default:
+                        console.log('No information about this user !!!');
+                }
+            })
+            document.body.appendChild(tegDiv)
+        })
+        return response;
+    }
+
+    requestUsers(userID);
+</script>
+
+</html>

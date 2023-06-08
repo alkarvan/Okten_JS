@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<!--зробити файл users.html
+з ендпоінту https://jsonplaceholder.typicode.com/users отримати всіх користувачів
+вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
+при кліку на посилання перехід на відповідну сторінку,
+на якій буде вся інформація про користувача (всі 15 полів) отримана через додатковий запит
+(https://jsonplaceholder.typicode.com/users/XXX   ХХХ - айді користувача)
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS HW 12_1</title>
+
+</head>
+<body>
+<form name="users">
+</form>
+</body>
+
+<script>
+    // let url = new URL('https://jsonplaceholder.typicode.com/users?id=1');
+    // console.log(url)
+    let tegOl = document.createElement('ol');
+    async function requestUsers() {
+        let response = await fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json());
+        for (let responseElement of response) {
+            let tegLi = document.createElement('li');
+            let tegA = document.createElement('a');
+            tegA.innerText = `ID: ${responseElement.id} Name: ${responseElement.name}`;
+            tegA.setAttribute('href', 'user-details.html');
+            tegA.setAttribute('target', '_blank')
+            tegA.addEventListener('click', function (){
+                localStorage.setItem('userID', JSON.stringify(responseElement.id));
+            })
+            tegLi.appendChild(tegA);
+            tegOl.appendChild(tegLi);
+        }
+        document.body.appendChild(tegOl)
+        return response;
+    }
+
+    requestUsers();
+
+    //   let newPage = '<a href="user-details.html?id=XXX" target="_blank">...</a>'
+    //
+    //   const html = `
+    // <head><meta charset='UTF-8'><title>Test</title></head>
+    // <body>
+    //   <p>Text.</p>
+    // </body>`;
+    //
+    //   window.open('about:blank').document.documentElement.innerHTML = html;
+
+    // let users = requestUsers();
+
+    // document.getElementById('userLi').onclick = function() {
+    //     window.location.href = 'user-details.html';
+    // };
+
+    // console.log(users)
+
+    // new_window = window.open();
+    // new_window.document.write('html код новой странички');
+    // new_window.document.close();
+
+    // let f = document.getElementById("formAboutUser");
+    // f.setAttribute('target', '_blank');
+
+    // document.form1.addEventListener('submit', function (e) {
+    //     e.preventDefault();
+    //     let obj = {
+    //         name: this.name.value,
+    //         surname: this.surname.value,
+    //         age: this.age.value
+    //     }
+    //
+    //     let targetForm1 = document.getElementsByClassName('targetForm1')[0];
+    //     targetForm1.innerHTML = JSON.stringify(obj);
+    // });
+
+</script>
+
+</html>
