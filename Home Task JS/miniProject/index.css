@@ -1,0 +1,40 @@
+body {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    width: 70vw;
+    margin: 3px 3px;
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    border: 3px solid darkblue;
+    border-radius: 5px;
+    text-align: right;
+    align-items: center;
+}
+
+button {
+    width: 25%;
+    height: 10%;
+    border: 2px solid cornflowerblue;
+    border-radius: 2px;
+    text-align: center;
+    margin-left: auto;
+}
+
+p {
+    width: 60%;
+    margin-left: 5%;
+    text-align: left;
+}
+
+b {
+    color: blueviolet;
+}
+
+a {
+    text-decoration: none;
+}
